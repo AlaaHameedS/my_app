@@ -1,0 +1,47 @@
+    Class Task 
+    class User < ActiveRecord::Base
+  
+        has_one :Work
+    
+        def self.print_out   ====== this class will show a message to announce the name of the table
+            "This is User table"
+        end
+        
+        def self.aaa_out ============ this class will show all id in user table 
+           
+            User.find(all)
+        end
+        def self.bbb_out ============= this class will show specific id user
+     
+          User.find(4)    
+        
+        end
+        def self.ccc_out =========== this class will show all All data in the user modle 
+            User.all
+     
+          end
+              
+         
+    end
+==========================================================================
+
+Instance Task
+
+class Work < ApplicationRecord
+
+    belongs_to :user
+  
+    def where_work
+        "I am  work in " +self.work_location+'now'============= this instance  method will show work location to specific id 
+    end  
+
+    def cond_out
+         work_name +work_location================== this instance  will show work name and location to specific id 
+        
+    end
+
+    def career_title
+        "Career Title "+self.work_name ================= this instance  will show Career Title 
+
+    end
+end

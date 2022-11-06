@@ -1,31 +1,78 @@
-    Class Task 
-    class User < ActiveRecord::Base
+    
+   
+   Class Method 
+   
+   class User < ActiveRecord::Base
   
         has_one :Work
     
-        def self.print_out   ====== this class will show a message to announce the name of the table
+        def self.print_out   ====== this class will show a message to announce the name of the table  
             "This is User table"
         end
-        
+         ********
+         Console //// User.print_out
+                      => "This is User table"
+        *********
         def self.aaa_out ============ this class will show all id in user table 
            
             User.find(all)
         end
+         *******
+         console /// User.aaa_out
+          User Load (0.2ms)  SELECT "users".* FROM "users"
+          User Load (0.3ms)  SELECT "users".* FROM "users" WHERE "users"."id" IN (?, ?, ?)  [["id", 2], ["id", 3], ["id", 4]]
+         *********
         def self.bbb_out ============= this class will show specific id user
      
           User.find(4)    
         
         end
+        **********
+        console////   User.bbb_out
+ 
+         User Load (0.2ms)  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?  [["id", 4], ["LIMIT", 1]]
+           =>
+          #<User:0x000001f11d892fc8
+           id: 4,
+           name: "Ahmed",
+           username: "ahmed",
+           email: "ahmed.d@yahoo.com",
+        *********
         def self.ccc_out =========== this class will show all All data in the user modle 
             User.all
      
           end
+     ************
+    console //////     irb(main):004:0> User.ccc_out
+  User Load (0.2ms)  SELECT "users".* FROM "users"
+=>
+[#<User:0x000001f1209a6b78
+  id: 2,
+  name: "Sama",
+  username: "sama",
+  email: "sama@gmail",
+  created_at: Tue, 01 Nov 2022 01:56:26.392799000 UTC +00:00,
+  updated_at: Tue, 01 Nov 2022 01:56:26.392799000 UTC +00:00>,
+ #<User:0x000001f1209a6ab0
+  id: 3,
+  name: "Alaa ",
+  username: "alaahameed",
+  email: "alaa@yahoo.com",
+  created_at: Thu, 03 Nov 2022 00:58:03.053807000 UTC +00:00,
+  updated_at: Fri, 04 Nov 2022 18:27:44.184225000 UTC +00:00>,
+ #<User:0x000001f1209a69e8
+  id: 4,
+  name: "Ahmed",
+  username: "ahmed",
+  email: "ahmed.d@yahoo.com",
+  created_at: Fri, 04 Nov 2022 18:30:56.957927000 UTC +00:00,
+  updated_at: Fri, 04 Nov 2022 18:30:56.957927000 UTC +00:00>]
+     ********* 
               
          
     end
 ==========================================================================
-
-Instance Task
+ Instance Method 
 
 class Work < ApplicationRecord
 
@@ -34,14 +81,31 @@ class Work < ApplicationRecord
     def where_work
         "I am  work in " +self.work_location+'now'============= this instance  method will show work location to specific id 
     end  
+      ********
+   console///   irb(main):011:0> Work.last.where_work
+      Work Load (0.1ms)  SELECT "works".* FROM "works" ORDER BY "works"."id" DESC LIMIT ?  [["LIMIT", 1]]
+       => "I am  work in Basra now"
+      ********
 
     def cond_out
          work_name +work_location================== this instance  will show work name and location to specific id 
         
     end
+      ********
+   console////    irb(main):016:0> Work.last.cond_out
+              Work Load (0.2ms)  SELECT "works".* FROM "works" ORDER BY "works"."id" DESC LIMIT ?  [["LIMIT", 1]]
+             => "TechnicalBasra "
+      *******  
 
     def career_title
         "Career Title "+self.work_name ================= this instance  will show Career Title 
 
-    end
+    end  
+    *************
+ console /////   irb(main):024:0> Work.last.career_title
+  Work Load (0.1ms)  SELECT "works".* FROM "works" ORDER BY "works"."id" DESC LIMIT ?  [["LIMIT", 1]]
+=> "Career Title Technical"
+   ************
+  
 end
+
